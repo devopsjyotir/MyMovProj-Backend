@@ -14,7 +14,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Watchlist.init({
-    id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true
+    },
     user_rating: DataTypes.INTEGER,
     user_id: {
       type: DataTypes.INTEGER,

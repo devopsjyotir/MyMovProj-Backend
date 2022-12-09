@@ -1,25 +1,24 @@
 'use strict';
-
+const falso = require('@ngneat/falso')
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+    const movies = [...Array(5)].map((_) => {
+      return {
+       title: falso.randMovie(),
+       year: falso.randNumber({charCount: 4}),
+        image: falso.randImg(),
+        genre: falso.randUserName(),
+        description: falso.randText({charCount: 70}),
+        rating: falso.randNumber({charCount: 1}),
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
+    })
+    await queryInterface.bulkInsert('movies', movies)
   },
 
   async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete('movies')
   }
 };
