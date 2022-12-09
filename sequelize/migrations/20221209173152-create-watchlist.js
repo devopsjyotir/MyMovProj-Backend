@@ -9,27 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      id: {
-        type: Sequelize.INTEGER
-      },
-      title: {
-        type: Sequelize.STRING
-      },
-      year: {
-        type: Sequelize.INTEGER
-      },
-      image: {
-        type: Sequelize.STRING
-      },
-      genre: {
-        type: Sequelize.STRING
-      },
-      description: {
-        type: Sequelize.STRING
-      },
-      rating: {
-        type: Sequelize.INTEGER
-      },
+     
       user_rating: {
         type: Sequelize.INTEGER
       },
