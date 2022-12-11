@@ -44,10 +44,29 @@ const GetWatchList = async (req, res) => {
 }
 
 
+const GetWatchedMovies = async (req, res) => {
+    try{ 
+        let userId = parseInt(req.params.user_id)
+        const userRelation = await Watchlist.findAll({
+            where: {
+                user_id: userId,
+                watched_status: 'true'
+            },
+            attributes: ["user_id", "movie_id", "watched_status"]
+        })
+        res.send(userRelation)
+    } catch (error) {
+        throw error
+    }
+}
+
+
+
 module.exports = {
     GetAllRelations,
     GetUserRelations,
-    GetWatchList
+    GetWatchList,
+    GetWatchedMovies
 }
 
 
