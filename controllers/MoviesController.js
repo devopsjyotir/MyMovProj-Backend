@@ -34,12 +34,23 @@ const CreateMovie = async (req, res) => {
 // update movie 
 const UpdateMovie = async (req, res) => {
     try{
-        const movieId = parseInt(req.params.movie_id)
-        const updatedMovie = await Movie.update(req.body, {
+        let movieId = parseInt(req.params.movie_id)
+        let updatedMovie = await Movie.update(req.body, {
             where:{id:movieId},
             returning:true
         })
         res.send(updatedMovie)
+    } catch (error) {
+        throw error
+    }
+}
+
+// delete Movie
+const DeleteMovie = async (req, res) => {
+    try {
+        let movieId = parseInt(req.params.movie_id)
+        await Movie.destroy({where:{id:movieId}})
+        res.send({message:`Deleted Movie with id of ${movieId}`})
     } catch (error) {
         throw error
     }
@@ -50,5 +61,6 @@ module.exports = {
 GetAllMovies,
 GetMovieDetails,
 CreateMovie,
-UpdateMovie
+UpdateMovie,
+DeleteMovie
 }
