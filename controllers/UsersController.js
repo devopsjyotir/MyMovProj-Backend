@@ -31,10 +31,25 @@ const CreateUser = async (req, res) => {
     }
 }
 
+// Update User by id
+const UpdateUser = async (req, res) => {
+    try{
+    let userId = parseInt(req.params.user_id)
+    let updatedUser = await User.update(req.body, {
+        where:{id:userId},
+        returning:true
+    })
+    res.send(updatedUser)
+    } catch (error){
+        throw error
+    }
+}
+
 
 
 module.exports = {
     GetAllUsers,
     GetUserDetails,
-    CreateUser
+    CreateUser,
+    UpdateUser
 }
