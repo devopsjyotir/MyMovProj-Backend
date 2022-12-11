@@ -21,9 +21,20 @@ const GetUserDetails = async (req, res) => {
     }
 }
 
+// Create a new user
+const CreateUser = async (req, res) => {
+    try{
+        const newUser = await User.create(req.body)
+        res.send(newUser)
+    } catch (error){
+        throw error
+    }
+}
+
 
 
 module.exports = {
     GetAllUsers,
-    GetUserDetails
+    GetUserDetails,
+    CreateUser
 }
