@@ -26,7 +26,7 @@ const GetUserRelations = async (req, res) => {
     }
 }
 
-
+// get yet to watch movies
 const GetWatchList = async (req, res) => {
     try{ 
         let userId = parseInt(req.params.user_id)
@@ -43,7 +43,7 @@ const GetWatchList = async (req, res) => {
     }
 }
 
-
+// GEt only watched movies 
 const GetWatchedMovies = async (req, res) => {
     try{ 
         let userId = parseInt(req.params.user_id)
@@ -60,13 +60,24 @@ const GetWatchedMovies = async (req, res) => {
     }
 }
 
+// Create Relation
+const CreateRelation = async (req, res ) => {
+    try {
+        const newRelation = await Watchlist.create(req.body)
+        res.send(newRelation)
+    } catch (error){
+        throw error
+    }
+}
+
 
 
 module.exports = {
     GetAllRelations,
     GetUserRelations,
     GetWatchList,
-    GetWatchedMovies
+    GetWatchedMovies,
+    CreateRelation
 }
 
 
