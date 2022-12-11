@@ -23,7 +23,24 @@ const GetMovieDetails = async(req, res) => {
 
 
 
+
+
+
+
+// Create movie 
+const CreateMovie = async (req, res) => {
+    try {
+        const newMovie = await Movie.create(req.body)
+        res.send(newMovie)
+    } catch (error){
+        throw error
+    }
+}
+
+
+
 module.exports = {
 GetAllMovies,
-GetMovieDetails
+GetMovieDetails,
+CreateMovie
 }
