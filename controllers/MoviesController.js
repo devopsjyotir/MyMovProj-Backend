@@ -11,9 +11,19 @@ const GetAllMovies = async(req, res) => {
     }
 }
 
+// Get Movie Details
+const GetMovieDetails = async(req, res) => {
+    try {
+        const movies = await Movie.findByPk(req.params.movie_id)
+        res.send(movies)
+    } catch (error){
+        throw error
+    }
+}
 
 
 
 module.exports = {
-GetAllMovies
+GetAllMovies,
+GetMovieDetails
 }
