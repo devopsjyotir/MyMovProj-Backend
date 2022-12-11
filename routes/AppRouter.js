@@ -6,6 +6,6 @@ const WatchlistRouter = require('./WatchlistRouter')
 
 Router.use("/users", UserRouter)
 Router.use('/movies', MovieRouter)
-// Router.use('/relations', WatchlistRouter)
+Router.use('/relations', WatchlistRouter)
 
 module.exports = Router
