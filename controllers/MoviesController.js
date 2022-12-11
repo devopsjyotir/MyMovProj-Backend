@@ -21,12 +21,6 @@ const GetMovieDetails = async(req, res) => {
     }
 }
 
-
-
-
-
-
-
 // Create movie 
 const CreateMovie = async (req, res) => {
     try {
@@ -37,10 +31,24 @@ const CreateMovie = async (req, res) => {
     }
 }
 
+// update movie 
+const UpdateMovie = async (req, res) => {
+    try{
+        const movieId = parseInt(req.params.movie_id)
+        const updatedMovie = await Movie.update(req.body, {
+            where:{id:movieId},
+            returning:true
+        })
+        res.send(updatedMovie)
+    } catch (error) {
+        throw error
+    }
+}
 
 
 module.exports = {
 GetAllMovies,
 GetMovieDetails,
-CreateMovie
+CreateMovie,
+UpdateMovie
 }
