@@ -10,18 +10,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
      
-      user_rating: {
+      userRating: {
         type: Sequelize.INTEGER
       },
-      user_id: {
+      userId: {
         type: Sequelize.INTEGER
       },
-      movie_id: {
+      movieId: {
         type: Sequelize.INTEGER
       },
-      watched_status: {
-        type: Sequelize.BOOLEAN
-      },
+    
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

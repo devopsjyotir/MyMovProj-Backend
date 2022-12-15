@@ -9,4 +9,5 @@ Router.get('/watched/:user_id', controller.GetWatchedMovies)
 Router.post('/', controller.CreateRelation)
 
 
+
 module.exports = Router

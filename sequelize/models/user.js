@@ -14,23 +14,16 @@ module.exports = (sequelize, DataTypes) => {
       User.belongsToMany(models.Movie, {
         as: 'watch_list',
         through: models.Watchlist
-,        foreignKey: 'user_id'
+,        foreignKey: 'userId'
       })
     }
   }
   User.init({
   
    name: DataTypes.STRING,
-   email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  
-    
-    },
-    passwordDigest: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
+   email: DataTypes.STRING,
+    passwordDigest: DataTypes.STRING,
+   
    },
    {
     sequelize,

@@ -16,9 +16,9 @@ const GetUserRelations = async (req, res) => {
         let userId = parseInt(req.params.user_id)
         const userRelation = await Watchlist.findAll({
             where: {
-                user_id: userId
+                userId: userId
             },
-            attributes: ["user_id", "movie_id", "watched_status"]
+            attributes: ["userId", "movieId"]
         })
         res.send(userRelation)
     } catch (error) {
@@ -26,16 +26,33 @@ const GetUserRelations = async (req, res) => {
     }
 }
 
+const GetUserMovieRelations = async (req, res) => {
+    try{ 
+        let userId = parseInt(req.params.user_id)
+        let movieId = parseInt(req.params.movie_id)
+        const userRelation = await Watchlist.findAll({
+            where: {
+                userId: userId,
+                movieId: movieId
+            },
+            attributes: ["userId", "movieId"]
+        })
+        res.send(userRelation)
+    } catch (error) {
+        throw error
+    }
+} 
+
 // get yet to watch movies
 const GetWatchList = async (req, res) => {
     try{ 
         let userId = parseInt(req.params.user_id)
         const userRelation = await Watchlist.findAll({
             where: {
-                user_id: userId,
-                watched_status: 'false'
+                userId: userId,
+           
             },
-            attributes: ["user_id", "movie_id", "watched_status"]
+            attributes: ["userId", "movieId", ]
         })
         res.send(userRelation)
     } catch (error) {
@@ -49,10 +66,10 @@ const GetWatchedMovies = async (req, res) => {
         let userId = parseInt(req.params.user_id)
         const userRelation = await Watchlist.findAll({
             where: {
-                user_id: userId,
-                watched_status: 'true'
+                userId: userId,
+           
             },
-            attributes: ["user_id", "movie_id", "watched_status"]
+            attributes: ["userId", "movieId"]
         })
         res.send(userRelation)
     } catch (error) {
@@ -77,7 +94,8 @@ module.exports = {
     GetUserRelations,
     GetWatchList,
     GetWatchedMovies,
-    CreateRelation
+    CreateRelation,
+    GetUserMovieRelations
 }
 
 

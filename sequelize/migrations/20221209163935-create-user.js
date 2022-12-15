@@ -16,12 +16,12 @@ module.exports = {
     
       email: {
         type: Sequelize.STRING,
-        allowNull: false,
+       
   
       },
       passwordDigest: {
         type: Sequelize.STRING,
-        allowNull: false
+      
       },
       createdAt: {
         allowNull: false,
